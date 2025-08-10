@@ -6,4 +6,14 @@ export class UserController {
     const userService = new UserService();
     return await userService.createUser(data);
   }
+
+  async getUserById(data: { id: string }) {
+    const userService = new UserService();
+    return await userService.getUserById(data);
+  }
+  
+  async getAllUsers() {
+    const userService = new UserService();
+    return await userService.getAllUsers();
+  }
 }

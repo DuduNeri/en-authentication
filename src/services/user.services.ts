@@ -4,7 +4,8 @@ import {
   IUserUpdate,
   IUserDelete,
   IUserLogin,
-  IUserResponse
+  IUserResponse,
+  IUserGetById
 } from "../interfaces/user.interfaces";
 import UserModel from "../models/user.models";
 import bcrypt from "bcrypt";
@@ -31,5 +32,23 @@ export class UserService {
 
     const { password, ...userWithoutPassword } = newUser.toObject();
     return userWithoutPassword as IUserResponse;
+  }
+
+  async getUserById(userData: IUserGetById): Promise<IUserResponse>{
+    if (!userData.id) {
+      throw new Error("ID do usuário é obrigatório");
+    }
+
+    const user = await UserModel.findById(userData.id).select("-password");
+    if (!user) {
+      throw new Error("Usuário não encontrado");
+    }
+
+    return user as IUserResponse;
+  }
+
+  async getAllUsers(): Promise<IUserResponse[]> {
+    const users = await UserModel.find().select("-password");
+    return users.map(user => user.toObject() as IUserResponse);
   }
 }
