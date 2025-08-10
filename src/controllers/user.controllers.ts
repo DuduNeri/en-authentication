@@ -11,9 +11,14 @@ export class UserController {
     const userService = new UserService();
     return await userService.getUserById(data);
   }
-  
+
   async getAllUsers() {
     const userService = new UserService();
     return await userService.getAllUsers();
+  }
+
+  async deleteUser(data: { id: string }) {
+    const userService = new UserService();
+    return await userService.deleteUser(data);
   }
 }

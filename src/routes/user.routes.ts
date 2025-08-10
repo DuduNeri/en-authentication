@@ -38,4 +38,16 @@ router.get("/", async (req: Request, res: Response) => {
     res.status(400).json({ message: (error as Error).message });
   }
 });
+
+router.delete("/:id", async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const userController = new UserController();
+    await userController.deleteUser({ id });
+    res.status(200).json({ message: "Usuário deletado com sucesso" });
+  } catch (error) {
+    console.error("❌ Erro ao deletar usuário:", error);
+    res.status(400).json({ message: (error as Error).message });
+  }
+})
 export default router;

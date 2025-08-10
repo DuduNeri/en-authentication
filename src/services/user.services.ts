@@ -34,7 +34,7 @@ export class UserService {
     return userWithoutPassword as IUserResponse;
   }
 
-  async getUserById(userData: IUserGetById): Promise<IUserResponse>{
+  async getUserById(userData: IUserGetById): Promise<IUserResponse> {
     if (!userData.id) {
       throw new Error("ID do usuário é obrigatório");
     }
@@ -51,4 +51,17 @@ export class UserService {
     const users = await UserModel.find().select("-password");
     return users.map(user => user.toObject() as IUserResponse);
   }
+
+  async deleteUser(userData: IUserDelete): Promise<void> {
+    if (!userData.id) {
+      throw new Error("ID do usuário é obrigatório");
+    }
+    const dell = await UserModel.findByIdAndDelete(userData.id);
+    if(!dell) {
+      throw new Error("Usuário não encontrado");
+    }
+    return;
+  }
+
+  
 }
