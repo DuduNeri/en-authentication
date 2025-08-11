@@ -50,4 +50,17 @@ router.delete("/:id", async (req: Request, res: Response) => {
     res.status(400).json({ message: (error as Error).message });
   }
 })
+
+router.put("/", async (req: Request, res: Response) => {
+  try {
+    const { name, email, password } = req.body;
+    const userId = req.query.id as string;
+    const userController = new UserController();
+    const user = await userController.updateUser({ name, email, password }, userId);
+    res.status(200).json(user);
+  } catch (error) {
+    console.error("❌ Erro ao atualizar usuário:", error);
+    res.status(400).json({ message: (error as Error).message });
+  }
+})
 export default router;

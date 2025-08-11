@@ -21,4 +21,9 @@ export class UserController {
     const userService = new UserService();
     return await userService.deleteUser(data);
   }
+
+  async updateUser(data: { name?: string; email?: string; password?: string }, userId: string) {
+    const userService = new UserService();
+    return await userService.updateUser(data, userId);
+  }
 }

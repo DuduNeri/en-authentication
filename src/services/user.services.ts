@@ -63,5 +63,27 @@ export class UserService {
     return;
   }
 
-  
+  async updateUser(data: IUserUpdate, userId: string): Promise<IUserResponse> {
+    if (!userId) {
+      throw new Error("ID do usuário é obrigatório");
+    }
+
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      throw new Error("Usuário não encontrado");
+    }
+
+    if (data.password) {
+      data.password = await bcrypt.hash(data.password, 10);
+    }
+
+    Object.assign(user, data);
+    user.updatedAt = new Date();
+    
+    await user.save();
+
+    const { password, ...userWithoutPassword } = user.toObject();
+    return userWithoutPassword as IUserResponse;
+
+  }
 }
