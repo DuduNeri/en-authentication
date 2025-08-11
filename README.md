@@ -21,7 +21,7 @@ dotenv – Configuração de variáveis de ambiente
 
 Joi ou Zod – Validação de dados de entrada
 
-📂 Estrutura de Pastas
+## 📂 Estrutura de Pastas
 src/
 │── controllers/
 │   └── auth.controller.ts      # Recebe a requisição e chama o service
@@ -52,8 +52,7 @@ Rotas protegidas verificam o token no header Authorization.
 
 📜 Exemplo de Requisição de Login
 http
-Copiar
-Editar
+
 POST /login
 Content-Type: application/json
 
@@ -80,8 +79,7 @@ Editar
 Adicionar middleware para validar o token:
 
 ts
-Copiar
-Editar
+
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
 
