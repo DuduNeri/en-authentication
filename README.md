@@ -22,9 +22,6 @@ dotenv – Configuração de variáveis de ambiente
 Joi ou Zod – Validação de dados de entrada
 
 📂 Estrutura de Pastas
-graphql
-Copiar
-Editar
 src/
 │── controllers/
 │   └── auth.controller.ts      # Recebe a requisição e chama o service
@@ -39,6 +36,7 @@ src/
 │── routes/
 │   └── auth.routes.ts          # Rotas de login
 │── app.ts                      # Inicialização do servidor
+
 🔑 Fluxo de Autenticação
 Usuário envia e-mail e senha para /login.
 
