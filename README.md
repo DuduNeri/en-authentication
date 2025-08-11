@@ -22,20 +22,24 @@ dotenv – Configuração de variáveis de ambiente
 Joi ou Zod – Validação de dados de entrada
 
 ## 📂 Estrutura de Pastas
+
+```
 src/
-│── controllers/
+├── controllers/
 │   └── auth.controller.ts      # Recebe a requisição e chama o service
-│── services/
-│   └── auth.services.ts        # Lógica de autenticação e geração de token
-│── models/
-│   └── user.models.ts          # Schema do usuário no MongoDB
-│── interfaces/
-│   └── user.interfaces.ts      # Tipos e interfaces TypeScript
-│── middlewares/
-│   └── auth.middleware.ts      # (Opcional) Validação do JWT nas rotas protegidas
-│── routes/
-│   └── auth.routes.ts          # Rotas de login
-│── app.ts                      # Inicialização do servidor
+├── services/
+│   └── auth.services.ts         # Lógica de autenticação e geração de token
+├── models/
+│   └── user.models.ts           # Schema do usuário no MongoDB
+├── interfaces/
+│   └── user.interfaces.ts       # Tipos e interfaces TypeScript
+├── middlewares/
+│   └── auth.middleware.ts       # (Opcional) Validação do JWT nas rotas protegidas
+├── routes/
+│   └── auth.routes.ts           # Rotas de login
+└── app.ts                       # Inicialização do servidor
+```
+
 
 🔑 Fluxo de Autenticação
 Usuário envia e-mail e senha para /login.
